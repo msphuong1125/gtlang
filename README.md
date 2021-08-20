@@ -1,21 +1,38 @@
 # gtlang
 simple programming language
 
-Sameple code:
+Sample code:
 
-
-==========================================================================================================================
-#!/bin/gtlang
+Variables are <strong>$</strong>, functions are <strong>@</strong>.
+<pre><span style="color: #333399;" data-darkreader-inline-color="">$number = 3</span>
+<span style="color: #333399;" data-darkreader-inline-color="">@echo_hello_world</span>
+<span style="color: #333399;" data-darkreader-inline-color="">    @echo "Hello world"</span>
+<span style="color: #333399;" data-darkreader-inline-color="">(@echo_hello_world)</span>
+<span style="color: #ff6600;" data-darkreader-inline-color="">&gt; Hello World</span></pre>
+Green Tea blocks of commands are indent-based. Just like Python, but you can mix spaces and tabs.
+<pre><span style="color: #333399;" data-darkreader-inline-color="">if $a &lt; 0</span>
+<span style="color: #333399;" data-darkreader-inline-color="">    @echo "lesser than 0"</span></pre>
+Assignments are <strong>: </strong>and <strong>=</strong> is comparision.
+<pre><span style="color: #333399;" data-darkreader-inline-color="">$a:3 // assignment</span>
+<span style="color: #333399;" data-darkreader-inline-color="">$a=3 // comparision</span></pre>
+New for:
+<pre><span style="color: #333399;" data-darkreader-inline-color="">for 3 times</span>
+<span style="color: #333399;" data-darkreader-inline-color="">    @echo $_time + “ ”</span>
+<span style="color: #333399;" data-darkreader-inline-color="">    at $_time=3:</span>
+<span style="color: #333399;" data-darkreader-inline-color="">        @echo “ (end)”</span>
+<span style="color: #ff6600;" data-darkreader-inline-color="">&gt;  1 2 3 (end)</span></pre>
+A more detailed example:
+<pre><span style="color: #333399;" data-darkreader-inline-color="">#!/bin/gtlang
 use_language_file "./en-us.gtlang" // using translation file
 include "source_a.gtc" // inclusion
 /*
-    <html>
-    multiline comments<br />
-    could use html tags in here<br />
-    <b>bold text</b>
-    </html>
+    &lt;html&gt;
+    multiline comments
+    could use html tags in here
+    &lt;b&gt;bold text&lt;/b&gt;
+    &lt;/html&gt;
 */
-$var:Hello world // <html>assign "Hello world" to variable name <b>var</b></html>
+$var:Hello world //assign "Hello world" to variable name var
 @echo var has value $var // output: var has value Hello world
 $x,$y:0,1 // assign multiple vars in 1 command
 1+1
@@ -43,15 +60,15 @@ $func_var : @func
 3 @add4 // return 7
 (3 @add4) @add5 // return 12
 //=================================================================
-if $a>2
+if $a&gt;2
     @echo abc
 for 10 times
     @echo $time + "\n"
 for 11 $i
     @fun abc
-for $i=0,$i<222,$i++
+for $i=0,$i&lt;222,$i++
     @echo xyz
-while $a<333
+while $a&lt;333
     $a++
     echo abc
 for 10 times
@@ -60,7 +77,7 @@ for 10 times
 $p:$q:0
 @fun2 $a $b: //com
     for 11 $i
-        for $i=0,$i<222,$i++
+        for $i=0,$i&lt;222,$i++
             @echo xyz
             if $$q=0 // global variable $q=0
                 if $$p=0// global variable $p=0
@@ -76,12 +93,12 @@ $p:$q:0
     @printinfo
         @echo $name \; $spicies
     @new $name // constructor
-        $this.$name : $name
+        $this.$name=$name
 $human:(new ^Human)
-$human.$name=John\, Smith
+$human.$name : John\, Smith
 $human.(@printinfo) // John, Smith ; Homo Sapien
 
-^Student << ^Human: // class Student extends class Human
+^Student &lt;&lt; ^Human: // class Student extends class Human
 new ^Student Annie Brown
 $@.(@printinfo) // Annie Brown ; Homo Sapien
 //=================================================================
@@ -109,4 +126,4 @@ defcat //default catch for main
         @echo $e
 deffin //default finally for main
     @exit 0
-===============================================================================================================================
+</span></pre>
